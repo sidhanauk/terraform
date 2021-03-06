@@ -45,7 +45,7 @@ spec:
             steps{
             container('terraform'){
                 //sh 'terraform init && terraform apply -auto-approve'
-                sh 'terraform init'
+                sh "terraform init"
                 sh 'terraform show'
             }
         }
