@@ -20,16 +20,16 @@ spec:
     args:
     - infinity
     env:
-      - name: AWSKEY
+      - name: AWS_ACCESS_KEY_ID
         valueFrom:
           secretKeyRef:
             name: aws
-            key: AWSKEY
-      - name: AWSTOKEN
+            key: AWS_ACCESS_KEY_ID
+      - name: AWS_SECRET_ACCESS_KEY
         valueFrom:
           secretKeyRef:
             name: aws
-            key: AWSTOKEN
+            key: AWS_SECRET_ACCESS_KEY
   - name: shell
     image: ubuntu
     command:
@@ -44,7 +44,7 @@ spec:
         stage('Main') {
             steps{
             container('terraform'){
-                sh 'terraform version && env'
+                sh 'terraform init && terraform plan'
             }
         }
     }
