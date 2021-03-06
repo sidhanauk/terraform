@@ -19,6 +19,17 @@ spec:
     - sleep
     args:
     - infinity
+    env:
+      - name: AWSKEY
+        valueFrom:
+          secretKeyRef:
+            name: aws
+            key: AWSKEY
+      - name: AWSTOKEN
+        valueFrom:
+          secretKeyRef:
+            name: aws
+            key: AWSTOKEN
   - name: shell
     image: ubuntu
     command:
@@ -33,7 +44,7 @@ spec:
         stage('Main') {
             steps{
             container('terraform'){
-                sh 'terraform version'
+                sh 'terraform version && env'
             }
         }
     }
