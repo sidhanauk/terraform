@@ -44,7 +44,7 @@ spec:
         stage('Main') {
             steps{
             container('terraform'){
-                sh 'terraform init && terraform plan'
+                sh 'terraform init && terraform apply -auto-approve'
             }
         }
     }
